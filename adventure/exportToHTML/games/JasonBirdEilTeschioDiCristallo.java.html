@@ -1,0 +1,471 @@
+<html>
+<head>
+<title>JasonBirdEilTeschioDiCristallo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #7a7e85;}
+.s1 { color: #bcbec4;}
+.s2 { color: #cf8e6d;}
+.s3 { color: #bcbec4;}
+.s4 { color: #5f826b; font-style: italic;}
+.s5 { color: #67a37c; font-style: italic;}
+.s6 { color: #2aacb8;}
+.s7 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+JasonBirdEilTeschioDiCristallo.java</font>
+</center></td></tr></table>
+<pre><span class="s0">/* 
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license 
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template 
+ */</span>
+<span class="s2">package </span><span class="s1">games</span><span class="s3">;</span>
+
+<span class="s2">import </span><span class="s1">com</span><span class="s3">.</span><span class="s1">mycompany</span><span class="s3">.</span><span class="s1">adventure</span><span class="s3">.</span><span class="s1">GameDescription</span><span class="s3">;</span>
+<span class="s2">import </span><span class="s1">java</span><span class="s3">.</span><span class="s1">io</span><span class="s3">.</span><span class="s1">PrintStream</span><span class="s3">;</span>
+<span class="s2">import </span><span class="s1">parser</span><span class="s3">.</span><span class="s1">ParserOutput</span><span class="s3">;</span>
+<span class="s2">import </span><span class="s1">type</span><span class="s3">.</span><span class="s1">Command</span><span class="s3">;</span>
+<span class="s2">import </span><span class="s1">type</span><span class="s3">.</span><span class="s1">CommandType</span><span class="s3">;</span>
+<span class="s2">import </span><span class="s1">type</span><span class="s3">.</span><span class="s1">Room</span><span class="s3">;</span>
+<span class="s2">import </span><span class="s1">type</span><span class="s3">.</span><span class="s1">AdvObject</span><span class="s3">;</span>
+<span class="s2">import </span><span class="s1">type</span><span class="s3">.</span><span class="s1">AdvObjectContainer</span><span class="s3">;</span>
+
+<span class="s4">/**</span>
+ <span class="s4">*</span>
+ <span class="s4">* </span><span class="s5">@author </span><span class="s4">Roberto</span>
+ <span class="s4">*/</span>
+<span class="s2">public class </span><span class="s1">JasonBirdEilTeschioDiCristallo </span><span class="s2">extends </span><span class="s1">GameDescription</span><span class="s3">{</span>
+    <span class="s0">//Rooms</span>
+    <span class="s2">private </span><span class="s1">Room jungle </span><span class="s3">= </span><span class="s2">new </span><span class="s1">Room</span><span class="s3">(</span><span class="s6">0</span><span class="s3">, </span><span class="s7">&quot;Giungla&quot;</span><span class="s3">, </span><span class="s7">&quot;Ti trovi nella giungla, un luogo lussureggiante e pieno di vegetazione.&quot;</span><span class="s3">);</span>
+        <span class="s1">jungle</span><span class="s3">.</span><span class="s1">setLook</span><span class="s3">(</span><span class="s7">&quot;Sei nella giungla, a nord, in lontananza vedi il tempio del tesoro, in tutte le altre direzioni c'è solo una &quot; </span><span class="s3">+</span>
+                <span class="s7">&quot;fitta giungla, inoltre vicino al tempio vedi qualcosa brillare, forse è una clessidra&quot;</span><span class="s3">);</span>
+    <span class="s2">private </span><span class="s1">Room templeEntrance </span><span class="s3">= </span><span class="s2">new </span><span class="s1">Room</span><span class="s3">(</span><span class="s6">1</span><span class="s3">, </span><span class="s7">&quot;Ingresso del Tempio&quot;</span><span class="s3">, </span><span class="s7">&quot;Ti trovi all'ingresso del tempio antico. Le imponenti porte &quot; </span><span class="s3">+</span>
+            <span class="s7">&quot;di pietra si aprono davanti a te.&quot;</span><span class="s3">);</span>
+        <span class="s1">templeEntrance</span><span class="s3">.</span><span class="s1">setLook</span><span class="s3">(</span><span class="s7">&quot;Sei finalmente nell'ingresso del tempio, a terra sembra esserci una lente speciale, a nord c'è &quot; </span><span class="s3">+</span>
+                <span class="s7">&quot;la sala delle statue, a est ci sono le celle&quot;</span><span class="s3">);</span>
+    <span class="s2">private </span><span class="s1">Room cell </span><span class="s3">= </span><span class="s2">new </span><span class="s1">Room</span><span class="s3">(</span><span class="s6">2</span><span class="s3">, </span><span class="s7">&quot;Cella&quot;</span><span class="s3">, </span><span class="s7">&quot;Ti trovi in una cella buia e fredda. L'aria è umida. C'è un odore di muffa insopportabile, &quot; </span><span class="s3">+</span>
+            <span class="s7">&quot;c'è uno scheletro che non sembra passarsela molto bene&quot;</span><span class="s3">);</span>
+        <span class="s1">cell</span><span class="s3">.</span><span class="s1">setLook</span><span class="s3">(</span><span class="s7">&quot;A nord della cella osservi un foro nel muro e in fondo al foro osservi un pulsante rosso&quot;</span><span class="s3">);</span>
+    <span class="s2">private </span><span class="s1">Room secretTunnel </span><span class="s3">= </span><span class="s2">new </span><span class="s1">Room</span><span class="s3">(</span><span class="s6">3</span><span class="s3">, </span><span class="s7">&quot;Tunnel Segreto&quot;</span><span class="s3">, </span><span class="s7">&quot;Sei nel tunnel segreto, un passaggio buio e nascosto. &quot; </span><span class="s3">+</span>
+            <span class="s7">&quot;È evidente che è stato scavato da qualche detenuto in cerca di libertà.&quot;</span><span class="s3">);</span>
+        <span class="s1">secretTunnel</span><span class="s3">.</span><span class="s1">setLook</span><span class="s3">(</span><span class="s7">&quot;In questa tunnel scuro, centinaia di ragni si agitano inquieti. Il tunnel è stretto e sinuoso, &quot; </span><span class="s3">+</span>
+                <span class="s7">&quot;sembra che il detenuto non ha ancora terminato di scavare. Nel buio avvolgente, alla fine del tunnel, si intravede un bagliore, è una chiave!&quot;</span><span class="s3">);</span>
+    <span class="s2">private </span><span class="s1">Room statueRoom </span><span class="s3">= </span><span class="s2">new </span><span class="s1">Room</span><span class="s3">(</span><span class="s6">4</span><span class="s3">, </span><span class="s7">&quot;Sala delle Statue&quot;</span><span class="s3">, </span><span class="s7">&quot;La sala è adornata da statue maestose che ti osservano con sguardi severi.&quot;</span><span class="s3">);</span>
+        <span class="s1">statueRoom</span><span class="s3">.</span><span class="s1">setLook</span><span class="s3">(</span><span class="s7">&quot;A sud c'è l'ingresso, a nord invece c'è un grande portone. Al centro della stanza osservi un altare, &quot; </span><span class="s3">+</span>
+                <span class="s7">&quot;su di esso vedi un ampolla con un liquido dorato al suo interno, sarà scaduto?&quot;</span><span class="s3">);</span>
+    <span class="s2">private </span><span class="s1">Room parchmentRoom </span><span class="s3">= </span><span class="s2">new </span><span class="s1">Room</span><span class="s3">(</span><span class="s6">5</span><span class="s3">, </span><span class="s7">&quot;Sala delle Pergamene&quot;</span><span class="s3">, </span><span class="s7">&quot;Ti trovi nella sala delle pergamene, un luogo pieno di antichi rotoli di pergamena.&quot;</span><span class="s3">);</span>
+        <span class="s1">parchmentRoom</span><span class="s3">.</span><span class="s1">setLook</span><span class="s3">(</span><span class="s7">&quot;A sud c'è la sala delle statue, a nord e a est e a ovest i muri sono pieni di pergamene accatastate,&quot; </span><span class="s3">+</span>
+                <span class="s7">&quot; a ovest ti accorgi della presenza di un meccanismo e in basso di un foro. Al centro della stanza un blocco di pietra&quot; </span><span class="s3">+</span>
+                <span class="s7">&quot; sostiene una pergamena che sembra essere molto importante, leggerla può aiutarci?&quot;</span><span class="s3">);</span>
+    <span class="s2">private </span><span class="s1">Room treasureRoom </span><span class="s3">= </span><span class="s2">new </span><span class="s1">Room</span><span class="s3">(</span><span class="s6">6</span><span class="s3">, </span><span class="s7">&quot;Stanza del Tesoro&quot;</span><span class="s3">, </span><span class="s7">&quot;Finalmente sei arrivato alla stanza del tesoro. &quot; </span><span class="s3">+</span>
+            <span class="s7">&quot;Un'abbagliante luce risplende al centro della stanza.&quot;</span><span class="s3">);</span>
+        <span class="s1">treasureRoom</span><span class="s3">.</span><span class="s1">setLook</span><span class="s3">(</span><span class="s7">&quot;A est c'è la sala delle pergamene, al centro della stanza c'è il teschio di cristallo finalmente, &quot; </span><span class="s3">+</span>
+                <span class="s7">&quot;ora non resta che prenderlo e uscire dal tempio&quot;</span><span class="s3">);</span>
+    <span class="s1">@Override</span>
+    <span class="s2">public void </span><span class="s1">init</span><span class="s3">() </span><span class="s2">throws </span><span class="s1">Exception</span><span class="s3">{</span>
+        <span class="s0">//commands</span>
+        <span class="s1">Command nord </span><span class="s3">= </span><span class="s2">new </span><span class="s1">Command</span><span class="s3">(</span><span class="s1">CommandType</span><span class="s3">.</span><span class="s1">NORD</span><span class="s3">, </span><span class="s7">&quot;nord&quot;</span><span class="s3">);</span>
+        <span class="s1">nord</span><span class="s3">.</span><span class="s1">setAlias</span><span class="s3">(</span><span class="s2">new </span><span class="s1">String</span><span class="s3">[]{</span><span class="s7">&quot;n&quot;</span><span class="s3">, </span><span class="s7">&quot;N&quot;</span><span class="s3">, </span><span class="s7">&quot;Nord&quot;</span><span class="s3">, </span><span class="s7">&quot;NORD&quot;</span><span class="s3">});</span>
+        <span class="s1">getCommands</span><span class="s3">().</span><span class="s1">add</span><span class="s3">(</span><span class="s1">nord</span><span class="s3">);</span>
+        <span class="s1">Command iventory </span><span class="s3">= </span><span class="s2">new </span><span class="s1">Command</span><span class="s3">(</span><span class="s1">CommandType</span><span class="s3">.</span><span class="s1">INVENTORY</span><span class="s3">, </span><span class="s7">&quot;inventario&quot;</span><span class="s3">);</span>
+        <span class="s1">iventory</span><span class="s3">.</span><span class="s1">setAlias</span><span class="s3">(</span><span class="s2">new </span><span class="s1">String</span><span class="s3">[]{</span><span class="s7">&quot;inv&quot;</span><span class="s3">, </span><span class="s7">&quot;i&quot;</span><span class="s3">, </span><span class="s7">&quot;I&quot;</span><span class="s3">});</span>
+        <span class="s1">getCommands</span><span class="s3">().</span><span class="s1">add</span><span class="s3">(</span><span class="s1">iventory</span><span class="s3">);</span>
+        <span class="s1">Command sud </span><span class="s3">= </span><span class="s2">new </span><span class="s1">Command</span><span class="s3">(</span><span class="s1">CommandType</span><span class="s3">.</span><span class="s1">SOUTH</span><span class="s3">, </span><span class="s7">&quot;sud&quot;</span><span class="s3">);</span>
+        <span class="s1">sud</span><span class="s3">.</span><span class="s1">setAlias</span><span class="s3">(</span><span class="s2">new </span><span class="s1">String</span><span class="s3">[]{</span><span class="s7">&quot;s&quot;</span><span class="s3">, </span><span class="s7">&quot;S&quot;</span><span class="s3">, </span><span class="s7">&quot;Sud&quot;</span><span class="s3">, </span><span class="s7">&quot;SUD&quot;</span><span class="s3">});</span>
+        <span class="s1">getCommands</span><span class="s3">().</span><span class="s1">add</span><span class="s3">(</span><span class="s1">sud</span><span class="s3">);</span>
+        <span class="s1">Command est </span><span class="s3">= </span><span class="s2">new </span><span class="s1">Command</span><span class="s3">(</span><span class="s1">CommandType</span><span class="s3">.</span><span class="s1">EAST</span><span class="s3">, </span><span class="s7">&quot;est&quot;</span><span class="s3">);</span>
+        <span class="s1">est</span><span class="s3">.</span><span class="s1">setAlias</span><span class="s3">(</span><span class="s2">new </span><span class="s1">String</span><span class="s3">[]{</span><span class="s7">&quot;e&quot;</span><span class="s3">, </span><span class="s7">&quot;E&quot;</span><span class="s3">, </span><span class="s7">&quot;Est&quot;</span><span class="s3">, </span><span class="s7">&quot;EST&quot;</span><span class="s3">});</span>
+        <span class="s1">getCommands</span><span class="s3">().</span><span class="s1">add</span><span class="s3">(</span><span class="s1">est</span><span class="s3">);</span>
+        <span class="s1">Command ovest </span><span class="s3">= </span><span class="s2">new </span><span class="s1">Command</span><span class="s3">(</span><span class="s1">CommandType</span><span class="s3">.</span><span class="s1">WEST</span><span class="s3">, </span><span class="s7">&quot;ovest&quot;</span><span class="s3">);</span>
+        <span class="s1">ovest</span><span class="s3">.</span><span class="s1">setAlias</span><span class="s3">(</span><span class="s2">new </span><span class="s1">String</span><span class="s3">[]{</span><span class="s7">&quot;o&quot;</span><span class="s3">, </span><span class="s7">&quot;O&quot;</span><span class="s3">, </span><span class="s7">&quot;Ovest&quot;</span><span class="s3">, </span><span class="s7">&quot;OVEST&quot;</span><span class="s3">});</span>
+        <span class="s1">getCommands</span><span class="s3">().</span><span class="s1">add</span><span class="s3">(</span><span class="s1">ovest</span><span class="s3">);</span>
+        <span class="s1">Command end </span><span class="s3">= </span><span class="s2">new </span><span class="s1">Command</span><span class="s3">(</span><span class="s1">CommandType</span><span class="s3">.</span><span class="s1">END</span><span class="s3">, </span><span class="s7">&quot;end&quot;</span><span class="s3">);</span>
+        <span class="s1">end</span><span class="s3">.</span><span class="s1">setAlias</span><span class="s3">(</span><span class="s2">new </span><span class="s1">String</span><span class="s3">[]{</span><span class="s7">&quot;end&quot;</span><span class="s3">, </span><span class="s7">&quot;fine&quot;</span><span class="s3">, </span><span class="s7">&quot;esci&quot;</span><span class="s3">, </span><span class="s7">&quot;muori&quot;</span><span class="s3">, </span><span class="s7">&quot;ammazzati&quot;</span><span class="s3">, </span><span class="s7">&quot;ucciditi&quot;</span><span class="s3">, </span><span class="s7">&quot;suicidati&quot;</span><span class="s3">,</span><span class="s7">&quot;exit&quot;</span><span class="s3">});</span>
+        <span class="s1">getCommands</span><span class="s3">().</span><span class="s1">add</span><span class="s3">(</span><span class="s1">end</span><span class="s3">);</span>
+        <span class="s1">Command look </span><span class="s3">= </span><span class="s2">new </span><span class="s1">Command</span><span class="s3">(</span><span class="s1">CommandType</span><span class="s3">.</span><span class="s1">LOOK_AT</span><span class="s3">, </span><span class="s7">&quot;osserva&quot;</span><span class="s3">);</span>
+        <span class="s1">look</span><span class="s3">.</span><span class="s1">setAlias</span><span class="s3">(</span><span class="s2">new </span><span class="s1">String</span><span class="s3">[]{</span><span class="s7">&quot;guarda&quot;</span><span class="s3">, </span><span class="s7">&quot;vedi&quot;</span><span class="s3">, </span><span class="s7">&quot;trova&quot;</span><span class="s3">, </span><span class="s7">&quot;cerca&quot;</span><span class="s3">, </span><span class="s7">&quot;descrivi&quot;</span><span class="s3">});</span>
+        <span class="s1">getCommands</span><span class="s3">().</span><span class="s1">add</span><span class="s3">(</span><span class="s1">look</span><span class="s3">);</span>
+        <span class="s1">Command pickup </span><span class="s3">= </span><span class="s2">new </span><span class="s1">Command</span><span class="s3">(</span><span class="s1">CommandType</span><span class="s3">.</span><span class="s1">PICK_UP</span><span class="s3">, </span><span class="s7">&quot;raccogli&quot;</span><span class="s3">);</span>
+        <span class="s1">pickup</span><span class="s3">.</span><span class="s1">setAlias</span><span class="s3">(</span><span class="s2">new </span><span class="s1">String</span><span class="s3">[]{</span><span class="s7">&quot;prendi&quot;</span><span class="s3">});</span>
+        <span class="s1">getCommands</span><span class="s3">().</span><span class="s1">add</span><span class="s3">(</span><span class="s1">pickup</span><span class="s3">);</span>
+        <span class="s1">Command open </span><span class="s3">= </span><span class="s2">new </span><span class="s1">Command</span><span class="s3">(</span><span class="s1">CommandType</span><span class="s3">.</span><span class="s1">OPEN</span><span class="s3">, </span><span class="s7">&quot;apri&quot;</span><span class="s3">);</span>
+        <span class="s1">open</span><span class="s3">.</span><span class="s1">setAlias</span><span class="s3">(</span><span class="s2">new </span><span class="s1">String</span><span class="s3">[]{});</span>
+        <span class="s1">getCommands</span><span class="s3">().</span><span class="s1">add</span><span class="s3">(</span><span class="s1">open</span><span class="s3">);</span>
+        <span class="s1">Command push </span><span class="s3">= </span><span class="s2">new </span><span class="s1">Command</span><span class="s3">(</span><span class="s1">CommandType</span><span class="s3">.</span><span class="s1">PUSH</span><span class="s3">, </span><span class="s7">&quot;premi&quot;</span><span class="s3">);</span>
+        <span class="s1">push</span><span class="s3">.</span><span class="s1">setAlias</span><span class="s3">(</span><span class="s2">new </span><span class="s1">String</span><span class="s3">[]{</span><span class="s7">&quot;spingi&quot;</span><span class="s3">,</span><span class="s7">&quot;attiva&quot;</span><span class="s3">});</span>
+        <span class="s1">getCommands</span><span class="s3">().</span><span class="s1">add</span><span class="s3">(</span><span class="s1">push</span><span class="s3">);</span>
+
+        <span class="s0">/* 
+        Room jungle = new Room(0, &quot;Giungla&quot;, &quot;Ti trovi nella giungla, un luogo lussureggiante e pieno di vegetazione.&quot;); 
+        jungle.setLook(&quot;Sei nella giungla, a nord, in lontananza vedi il tempio del tesoro, in tutte le altre direzioni c'è solo una &quot; + 
+                &quot;fitta giungla, inoltre vicino al tempio vedi qualcosa brillare, forse è una clessidra&quot;); 
+        Room templeEntrance = new Room(1, &quot;Ingresso del Tempio&quot;, &quot;Ti trovi all'ingresso del tempio antico. Le imponenti porte &quot; + 
+                &quot;di pietra si aprono davanti a te.&quot;); 
+        templeEntrance.setLook(&quot;Sei finalmente nell'ingresso del tempio, a terra sembra esserci una lente speciale, a nord c'è &quot; + 
+                &quot;la sala delle statue, a est ci sono le celle&quot;); 
+        Room cell = new Room(2, &quot;Cella&quot;, &quot;Ti trovi in una cella buia e fredda. L'aria è umida. C'è un odore di muffa insopportabile, &quot; + 
+                &quot;c'è uno scheletro che non sembra passarsela molto bene&quot;); 
+        cell.setLook(&quot;A nord della cella osservi un foro nel muro e in fondo al foro osservi un pulsante rosso&quot;); 
+        Room secretTunnel = new Room(3, &quot;Tunnel Segreto&quot;, &quot;Sei nel tunnel segreto, un passaggio buio e nascosto. &quot; + 
+                &quot;È evidente che è stato scavato da qualche detenuto in cerca di libertà.&quot;); 
+        secretTunnel.setLook(&quot;In questa tunnel scuro, centinaia di ragni si agitano inquieti. Il tunnel è stretto e sinuoso, &quot; + 
+                &quot;sembra che il detenuto non ha ancora terminato di scavare. Nel buio avvolgente, alla fine del tunnel, si intravede un bagliore, è una chiave!&quot;); 
+        Room statueRoom = new Room(4, &quot;Sala delle Statue&quot;, &quot;La sala è adornata da statue maestose che ti osservano con sguardi severi.&quot;); 
+        statueRoom.setLook(&quot;A sud c'è l'ingresso, a nord invece c'è un grande portone. Al centro della stanza osservi un altare, &quot; + 
+                &quot;su di esso vedi un ampolla con un liquido dorato al suo interno, sarà scaduto?&quot;); 
+        Room parchmentRoom = new Room(5, &quot;Sala delle Pergamene&quot;, &quot;Ti trovi nella sala delle pergamene, un luogo pieno di antichi rotoli di pergamena.&quot;); 
+        parchmentRoom.setLook(&quot;A sud c'è la sala delle statue, a nord e a est e a ovest i muri sono pieni di pergamene accatastate,&quot; + 
+                &quot; a ovest ti accorgi della presenza di un meccanismo e in basso di un foro. Al centro della stanza un blocco di pietra&quot; + 
+                &quot; sostiene una pergamena che sembra essere molto importante, leggerla può aiutarci?&quot;); 
+        Room treasureRoom = new Room(6, &quot;Stanza del Tesoro&quot;, &quot;Finalmente sei arrivato alla stanza del tesoro. &quot; + 
+                &quot;Un'abbagliante luce risplende al centro della stanza.&quot;); 
+        treasureRoom.setLook(&quot;A est c'è la sala delle pergamene, al centro della stanza c'è il teschio di cristallo finalmente, &quot; + 
+                &quot;ora non resta che prenderlo e uscire dal tempio&quot;); 
+        */</span>
+        <span class="s1">jungle</span><span class="s3">.</span><span class="s1">setNorth</span><span class="s3">(</span><span class="s1">templeEntrance</span><span class="s3">);</span>
+        <span class="s1">jungle</span><span class="s3">.</span><span class="s1">setSouth</span><span class="s3">(</span><span class="s2">null</span><span class="s3">);</span>
+        <span class="s1">jungle</span><span class="s3">.</span><span class="s1">setEast</span><span class="s3">(</span><span class="s2">null</span><span class="s3">);</span>
+        <span class="s1">jungle</span><span class="s3">.</span><span class="s1">setWest</span><span class="s3">(</span><span class="s2">null</span><span class="s3">);</span>
+
+        <span class="s1">getRooms</span><span class="s3">().</span><span class="s1">add</span><span class="s3">(</span><span class="s1">jungle</span><span class="s3">);</span>
+
+        <span class="s1">templeEntrance</span><span class="s3">.</span><span class="s1">setSouth</span><span class="s3">(</span><span class="s1">jungle</span><span class="s3">);</span>
+        <span class="s1">templeEntrance</span><span class="s3">.</span><span class="s1">setEast</span><span class="s3">(</span><span class="s2">null</span><span class="s3">);</span>
+        <span class="s1">templeEntrance</span><span class="s3">.</span><span class="s1">setNorth</span><span class="s3">(</span><span class="s1">statueRoom</span><span class="s3">);</span>
+        <span class="s1">templeEntrance</span><span class="s3">.</span><span class="s1">setWest</span><span class="s3">(</span><span class="s1">cell</span><span class="s3">);</span>
+
+        <span class="s1">getRooms</span><span class="s3">().</span><span class="s1">add</span><span class="s3">(</span><span class="s1">templeEntrance</span><span class="s3">);</span>
+
+        <span class="s1">cell</span><span class="s3">.</span><span class="s1">setWest</span><span class="s3">(</span><span class="s2">null</span><span class="s3">);</span>
+        <span class="s0">//all'inizio il nord è null, ma successivamente verrà settato a secretTunnel</span>
+        <span class="s1">cell</span><span class="s3">.</span><span class="s1">setNorth</span><span class="s3">(</span><span class="s2">null</span><span class="s3">);</span>
+        <span class="s1">cell</span><span class="s3">.</span><span class="s1">setEast</span><span class="s3">(</span><span class="s1">templeEntrance</span><span class="s3">);</span>
+        <span class="s1">cell</span><span class="s3">.</span><span class="s1">setSouth</span><span class="s3">(</span><span class="s2">null</span><span class="s3">);</span>
+
+        <span class="s1">getRooms</span><span class="s3">().</span><span class="s1">add</span><span class="s3">(</span><span class="s1">cell</span><span class="s3">);</span>
+
+        <span class="s1">secretTunnel</span><span class="s3">.</span><span class="s1">setSouth</span><span class="s3">(</span><span class="s1">cell</span><span class="s3">);</span>
+        <span class="s1">secretTunnel</span><span class="s3">.</span><span class="s1">setNorth</span><span class="s3">(</span><span class="s2">null</span><span class="s3">);</span>
+        <span class="s1">secretTunnel</span><span class="s3">.</span><span class="s1">setEast</span><span class="s3">(</span><span class="s2">null</span><span class="s3">);</span>
+        <span class="s1">secretTunnel</span><span class="s3">.</span><span class="s1">setWest</span><span class="s3">(</span><span class="s2">null</span><span class="s3">);</span>
+
+        <span class="s1">getRooms</span><span class="s3">().</span><span class="s1">add</span><span class="s3">(</span><span class="s1">secretTunnel</span><span class="s3">);</span>
+
+        <span class="s1">statueRoom</span><span class="s3">.</span><span class="s1">setSouth</span><span class="s3">(</span><span class="s1">templeEntrance</span><span class="s3">);</span>
+        <span class="s1">statueRoom</span><span class="s3">.</span><span class="s1">setNorth</span><span class="s3">(</span><span class="s1">parchmentRoom</span><span class="s3">);</span>
+        <span class="s1">statueRoom</span><span class="s3">.</span><span class="s1">setEast</span><span class="s3">(</span><span class="s2">null</span><span class="s3">);</span>
+        <span class="s1">statueRoom</span><span class="s3">.</span><span class="s1">setWest</span><span class="s3">(</span><span class="s2">null</span><span class="s3">);</span>
+
+        <span class="s1">getRooms</span><span class="s3">().</span><span class="s1">add</span><span class="s3">(</span><span class="s1">statueRoom</span><span class="s3">);</span>
+
+        <span class="s1">parchmentRoom</span><span class="s3">.</span><span class="s1">setSouth</span><span class="s3">(</span><span class="s1">statueRoom</span><span class="s3">);</span>
+        <span class="s1">parchmentRoom</span><span class="s3">.</span><span class="s1">setNorth</span><span class="s3">(</span><span class="s2">null</span><span class="s3">);</span>
+        <span class="s1">parchmentRoom</span><span class="s3">.</span><span class="s1">setEast</span><span class="s3">(</span><span class="s1">treasureRoom</span><span class="s3">);</span>
+        <span class="s1">parchmentRoom</span><span class="s3">.</span><span class="s1">setWest</span><span class="s3">(</span><span class="s2">null</span><span class="s3">);</span>
+
+        <span class="s1">getRooms</span><span class="s3">().</span><span class="s1">add</span><span class="s3">(</span><span class="s1">parchmentRoom</span><span class="s3">);</span>
+
+        <span class="s1">treasureRoom</span><span class="s3">.</span><span class="s1">setSouth</span><span class="s3">(</span><span class="s2">null</span><span class="s3">);</span>
+        <span class="s1">treasureRoom</span><span class="s3">.</span><span class="s1">setNorth</span><span class="s3">(</span><span class="s2">null</span><span class="s3">);</span>
+        <span class="s1">treasureRoom</span><span class="s3">.</span><span class="s1">setEast</span><span class="s3">(</span><span class="s2">null</span><span class="s3">);</span>
+        <span class="s1">treasureRoom</span><span class="s3">.</span><span class="s1">setWest</span><span class="s3">(</span><span class="s1">parchmentRoom</span><span class="s3">);</span>
+
+        <span class="s1">getRooms</span><span class="s3">().</span><span class="s1">add</span><span class="s3">(</span><span class="s1">treasureRoom</span><span class="s3">);</span>
+
+        <span class="s0">// Aggiunge oggetti alla stanza &quot;Giungla&quot; (jungle)</span>
+        <span class="s1">AdvObject hourglass </span><span class="s3">= </span><span class="s2">new </span><span class="s1">AdvObject</span><span class="s3">(</span><span class="s6">1</span><span class="s3">, </span><span class="s7">&quot;Clessidra&quot;</span><span class="s3">);</span>
+        <span class="s1">jungle</span><span class="s3">.</span><span class="s1">getObjects</span><span class="s3">().</span><span class="s1">add</span><span class="s3">(</span><span class="s1">hourglass</span><span class="s3">);</span>
+
+        <span class="s0">// Aggiunge oggetti alla stanza &quot;Temple Entrance&quot; (templeEntrance)</span>
+        <span class="s1">AdvObject ancientLens </span><span class="s3">= </span><span class="s2">new </span><span class="s1">AdvObject</span><span class="s3">(</span><span class="s6">2</span><span class="s3">, </span><span class="s7">&quot;Lente dell'Antico Sole&quot;</span><span class="s3">, </span><span class="s7">&quot;Una lente che apparteneva all'antica civiltà.&quot;</span><span class="s3">);</span>
+        <span class="s1">templeEntrance</span><span class="s3">.</span><span class="s1">getObjects</span><span class="s3">().</span><span class="s1">add</span><span class="s3">(</span><span class="s1">ancientLens</span><span class="s3">);</span>
+
+        <span class="s0">// Aggiunge oggetti alla stanza &quot;Cell&quot; (cell)</span>
+        <span class="s1">AdvObject humanBones </span><span class="s3">= </span><span class="s2">new </span><span class="s1">AdvObject</span><span class="s3">(</span><span class="s6">3</span><span class="s3">, </span><span class="s7">&quot;Ossa Umane&quot;</span><span class="s3">, </span><span class="s7">&quot;Una collezione di ossa umane, resti di un prigioniero dimenticato.&quot;</span><span class="s3">);</span>
+        <span class="s1">cell</span><span class="s3">.</span><span class="s1">getObjects</span><span class="s3">().</span><span class="s1">add</span><span class="s3">(</span><span class="s1">humanBones</span><span class="s3">);</span>
+
+        <span class="s1">AdvObject button </span><span class="s3">= </span><span class="s2">new </span><span class="s1">AdvObject</span><span class="s3">(</span><span class="s6">4</span><span class="s3">, </span><span class="s7">&quot;Pulsante&quot;</span><span class="s3">, </span><span class="s7">&quot;Un misterioso pulsante dallo scopo sconosciuto.&quot;</span><span class="s3">);</span>
+        <span class="s1">cell</span><span class="s3">.</span><span class="s1">getObjects</span><span class="s3">().</span><span class="s1">add</span><span class="s3">(</span><span class="s1">button</span><span class="s3">);</span>
+
+        <span class="s0">// Aggiunge oggetti alla stanza &quot;Secret Tunnel&quot; (secretTunnel)</span>
+        <span class="s1">AdvObject key </span><span class="s3">= </span><span class="s2">new </span><span class="s1">AdvObject</span><span class="s3">(</span><span class="s6">5</span><span class="s3">, </span><span class="s7">&quot;Chiave&quot;</span><span class="s3">, </span><span class="s7">&quot;Una chiave arrugginita che sembra aprire qualcosa di importante.&quot;</span><span class="s3">);</span>
+        <span class="s1">secretTunnel</span><span class="s3">.</span><span class="s1">getObjects</span><span class="s3">().</span><span class="s1">add</span><span class="s3">(</span><span class="s1">key</span><span class="s3">);</span>
+
+        <span class="s0">// Aggiunge oggetti alla stanza &quot;Statue Room&quot; (statueRoom)</span>
+        <span class="s1">AdvObject cursePotion </span><span class="s3">= </span><span class="s2">new </span><span class="s1">AdvObject</span><span class="s3">(</span><span class="s6">6</span><span class="s3">, </span><span class="s7">&quot;Pozione Antimaledizione&quot;</span><span class="s3">, </span><span class="s7">&quot;Una pozione in grado di spezzare antiche maledizioni.&quot;</span><span class="s3">);</span>
+        <span class="s1">statueRoom</span><span class="s3">.</span><span class="s1">getObjects</span><span class="s3">().</span><span class="s1">add</span><span class="s3">(</span><span class="s1">cursePotion</span><span class="s3">);</span>
+
+        <span class="s1">AdvObject ancientGate </span><span class="s3">= </span><span class="s2">new </span><span class="s1">AdvObject</span><span class="s3">(</span><span class="s6">7</span><span class="s3">, </span><span class="s7">&quot;Portone Antico&quot;</span><span class="s3">, </span><span class="s7">&quot;Un massiccio portone che conduce alla stanza del tesoro.&quot;</span><span class="s3">);</span>
+        <span class="s1">statueRoom</span><span class="s3">.</span><span class="s1">getObjects</span><span class="s3">().</span><span class="s1">add</span><span class="s3">(</span><span class="s1">ancientGate</span><span class="s3">);</span>
+
+        <span class="s0">// Aggiunge oggetti alla stanza &quot;Sala delle Pergamene&quot; (parchmentRoom)</span>
+        <span class="s1">AdvObject scroll </span><span class="s3">= </span><span class="s2">new </span><span class="s1">AdvObject</span><span class="s3">(</span><span class="s6">8</span><span class="s3">, </span><span class="s7">&quot;Pergamena&quot;</span><span class="s3">, </span><span class="s7">&quot;Una pergamena antica con iscrizioni misteriose.&quot;</span><span class="s3">);</span>
+        <span class="s1">parchmentRoom</span><span class="s3">.</span><span class="s1">getObjects</span><span class="s3">().</span><span class="s1">add</span><span class="s3">(</span><span class="s1">scroll</span><span class="s3">);</span>
+
+        <span class="s0">// Aggiunge oggetti alla stanza &quot;Stanza del Tesoro&quot; (treasureRoom)</span>
+        <span class="s1">AdvObject crystalSkull </span><span class="s3">= </span><span class="s2">new </span><span class="s1">AdvObject</span><span class="s3">(</span><span class="s6">9</span><span class="s3">, </span><span class="s7">&quot;Teschio di Cristallo&quot;</span><span class="s3">, </span><span class="s7">&quot;Un leggendario teschio di cristallo, si dice che possieda un grande potere.&quot;</span><span class="s3">);</span>
+        <span class="s1">treasureRoom</span><span class="s3">.</span><span class="s1">getObjects</span><span class="s3">().</span><span class="s1">add</span><span class="s3">(</span><span class="s1">crystalSkull</span><span class="s3">);</span>
+
+        <span class="s0">// Aggiunge il meccanismo come oggetto nella stanza delle pergamene</span>
+        <span class="s1">AdvObject mechanism </span><span class="s3">= </span><span class="s2">new </span><span class="s1">AdvObject</span><span class="s3">(</span><span class="s6">10</span><span class="s3">, </span><span class="s7">&quot;meccanismo&quot;</span><span class="s3">, </span><span class="s7">&quot;Un misterioso meccanismo di pietra inciso con simboli strani.&quot;</span><span class="s3">);</span>
+        <span class="s1">mechanism</span><span class="s3">.</span><span class="s1">setAlias</span><span class="s3">(</span><span class="s2">new </span><span class="s1">String</span><span class="s3">[]{</span><span class="s7">&quot;ingranaggio&quot;</span><span class="s3">});</span>
+        <span class="s1">parchmentRoom</span><span class="s3">.</span><span class="s1">getObjects</span><span class="s3">().</span><span class="s1">add</span><span class="s3">(</span><span class="s1">mechanism</span><span class="s3">);</span>
+
+        <span class="s0">// Oggetto: Clessidra</span>
+        <span class="s1">hourglass</span><span class="s3">.</span><span class="s1">setAlias</span><span class="s3">(</span><span class="s2">new </span><span class="s1">String</span><span class="s3">[]{</span><span class="s7">&quot;clessidra&quot; </span><span class="s3">, </span><span class="s7">&quot;vecchia clessidra&quot; </span><span class="s3">, </span><span class="s7">&quot;clessidra magica&quot;</span><span class="s3">});</span>
+
+        <span class="s0">// Oggetto: Lente dell'Antico Sole</span>
+        <span class="s1">ancientLens</span><span class="s3">.</span><span class="s1">setAlias</span><span class="s3">(</span><span class="s2">new </span><span class="s1">String</span><span class="s3">[]{</span><span class="s7">&quot;lente&quot;</span><span class="s3">, </span><span class="s7">&quot;lente dell'Antico Sole&quot; </span><span class="s3">, </span><span class="s7">&quot;lente antica&quot; </span><span class="s3">, </span><span class="s7">&quot;lente magica&quot; </span><span class="s3">});</span>
+
+        <span class="s0">// Oggetto: Ossa Umane</span>
+        <span class="s1">humanBones</span><span class="s3">.</span><span class="s1">setAlias</span><span class="s3">(</span><span class="s2">new </span><span class="s1">String</span><span class="s3">[]{</span><span class="s7">&quot;ossa&quot;</span><span class="s3">, </span><span class="s7">&quot;ossa umana&quot; </span><span class="s3">, </span><span class="s7">&quot;ossa umane&quot; </span><span class="s3">, </span><span class="s7">&quot;ossa di prigioniero&quot;</span><span class="s3">});</span>
+
+        <span class="s0">// Oggetto: Pulsante</span>
+        <span class="s1">button</span><span class="s3">.</span><span class="s1">setAlias</span><span class="s3">(</span><span class="s2">new </span><span class="s1">String</span><span class="s3">[]{</span><span class="s7">&quot;pulsante&quot; </span><span class="s3">, </span><span class="s7">&quot;misterioso pulsante&quot; </span><span class="s3">, </span><span class="s7">&quot;pulsante misterioso&quot;</span><span class="s3">});</span>
+
+        <span class="s0">// Oggetto: Chiave</span>
+        <span class="s1">key</span><span class="s3">.</span><span class="s1">setAlias</span><span class="s3">(</span><span class="s2">new </span><span class="s1">String</span><span class="s3">[]{</span><span class="s7">&quot;chiave&quot; </span><span class="s3">, </span><span class="s7">&quot;chiave arrugginita&quot; </span><span class="s3">, </span><span class="s7">&quot;chiave misteriosa&quot;</span><span class="s3">});</span>
+
+        <span class="s0">// Oggetto: Pozione Antimaledizione</span>
+        <span class="s1">cursePotion</span><span class="s3">.</span><span class="s1">setAlias</span><span class="s3">(</span><span class="s2">new </span><span class="s1">String</span><span class="s3">[]{</span><span class="s7">&quot;pozione&quot;</span><span class="s3">, </span><span class="s7">&quot;pozione antimaledizione&quot; </span><span class="s3">, </span><span class="s7">&quot;pozione magica&quot;</span><span class="s3">});</span>
+
+        <span class="s0">// Oggetto: Portone Antico</span>
+        <span class="s1">ancientGate</span><span class="s3">.</span><span class="s1">setAlias</span><span class="s3">(</span><span class="s2">new </span><span class="s1">String</span><span class="s3">[]{</span><span class="s7">&quot;portone&quot;</span><span class="s3">, </span><span class="s7">&quot;portone antico&quot; </span><span class="s3">, </span><span class="s7">&quot;portone magico&quot;</span><span class="s3">});</span>
+
+        <span class="s0">// Oggetto: Pergamena</span>
+        <span class="s1">scroll</span><span class="s3">.</span><span class="s1">setAlias</span><span class="s3">(</span><span class="s2">new </span><span class="s1">String</span><span class="s3">[]{</span><span class="s7">&quot;pergamena&quot; </span><span class="s3">, </span><span class="s7">&quot;pergamena antica&quot; </span><span class="s3">, </span><span class="s7">&quot;pergamena misteriosa&quot;</span><span class="s3">});</span>
+
+        <span class="s0">// Oggetto: Teschio di Cristallo</span>
+        <span class="s1">crystalSkull</span><span class="s3">.</span><span class="s1">setAlias</span><span class="s3">(</span><span class="s2">new </span><span class="s1">String</span><span class="s3">[]{</span><span class="s7">&quot;teschio di cristallo&quot; </span><span class="s3">, </span><span class="s7">&quot;teschio&quot; </span><span class="s3">, </span><span class="s7">&quot;teschio magico&quot;</span><span class="s3">});</span>
+
+        <span class="s0">// Oggetto: Meccanismo</span>
+        <span class="s1">mechanism</span><span class="s3">.</span><span class="s1">setAlias</span><span class="s3">(</span><span class="s2">new </span><span class="s1">String</span><span class="s3">[]{</span><span class="s7">&quot;ingranaggio&quot;</span><span class="s3">, </span><span class="s7">&quot;meccanismo&quot; </span><span class="s3">, </span><span class="s7">&quot;meccanismo misterioso&quot; </span><span class="s3">, </span><span class="s7">&quot;meccanismo magico&quot;</span><span class="s3">});</span>
+
+        <span class="s1">setCurrentRoom</span><span class="s3">(</span><span class="s1">jungle</span><span class="s3">);</span>
+    <span class="s3">}</span>
+
+    <span class="s1">@Override</span>
+    <span class="s2">public void </span><span class="s1">nextMove</span><span class="s3">(</span><span class="s1">ParserOutput p</span><span class="s3">, </span><span class="s1">PrintStream out</span><span class="s3">) {</span>
+        <span class="s2">if </span><span class="s3">(</span><span class="s1">p</span><span class="s3">.</span><span class="s1">getCommand</span><span class="s3">() == </span><span class="s2">null</span><span class="s3">) {</span>
+            <span class="s1">out</span><span class="s3">.</span><span class="s1">println</span><span class="s3">(</span><span class="s7">&quot;Non ho capito cosa devo fare! Prova con un altro comando.&quot;</span><span class="s3">);</span>
+        <span class="s3">}</span>
+        <span class="s2">else</span><span class="s3">{</span>
+            <span class="s0">//move</span>
+            <span class="s2">boolean </span><span class="s1">noroom </span><span class="s3">= </span><span class="s2">false</span><span class="s3">;</span>
+            <span class="s2">boolean </span><span class="s1">move </span><span class="s3">= </span><span class="s2">false</span><span class="s3">;</span>
+            <span class="s2">if </span><span class="s3">(</span><span class="s1">p</span><span class="s3">.</span><span class="s1">getCommand</span><span class="s3">().</span><span class="s1">getType</span><span class="s3">() == </span><span class="s1">CommandType</span><span class="s3">.</span><span class="s1">NORD</span><span class="s3">) {</span>
+                <span class="s2">if </span><span class="s3">(</span><span class="s1">getCurrentRoom</span><span class="s3">().</span><span class="s1">getNorth</span><span class="s3">() != </span><span class="s2">null</span><span class="s3">) {</span>
+                    <span class="s1">setCurrentRoom</span><span class="s3">(</span><span class="s1">getCurrentRoom</span><span class="s3">().</span><span class="s1">getNorth</span><span class="s3">());</span>
+                    <span class="s1">move </span><span class="s3">= </span><span class="s2">true</span><span class="s3">;</span>
+                <span class="s3">} </span><span class="s2">else </span><span class="s3">{</span>
+                    <span class="s1">noroom </span><span class="s3">= </span><span class="s2">true</span><span class="s3">;</span>
+                <span class="s3">}</span>
+            <span class="s3">} </span><span class="s2">else if </span><span class="s3">(</span><span class="s1">p</span><span class="s3">.</span><span class="s1">getCommand</span><span class="s3">().</span><span class="s1">getType</span><span class="s3">() == </span><span class="s1">CommandType</span><span class="s3">.</span><span class="s1">SOUTH</span><span class="s3">) {</span>
+                <span class="s2">if </span><span class="s3">(</span><span class="s1">getCurrentRoom</span><span class="s3">().</span><span class="s1">getSouth</span><span class="s3">() != </span><span class="s2">null</span><span class="s3">) {</span>
+                    <span class="s1">setCurrentRoom</span><span class="s3">(</span><span class="s1">getCurrentRoom</span><span class="s3">().</span><span class="s1">getSouth</span><span class="s3">());</span>
+                    <span class="s1">move </span><span class="s3">= </span><span class="s2">true</span><span class="s3">;</span>
+                <span class="s3">} </span><span class="s2">else </span><span class="s3">{</span>
+                    <span class="s1">noroom </span><span class="s3">= </span><span class="s2">true</span><span class="s3">;</span>
+                <span class="s3">}</span>
+            <span class="s3">} </span><span class="s2">else if </span><span class="s3">(</span><span class="s1">p</span><span class="s3">.</span><span class="s1">getCommand</span><span class="s3">().</span><span class="s1">getType</span><span class="s3">() == </span><span class="s1">CommandType</span><span class="s3">.</span><span class="s1">EAST</span><span class="s3">) {</span>
+                <span class="s2">if </span><span class="s3">(</span><span class="s1">getCurrentRoom</span><span class="s3">().</span><span class="s1">getEast</span><span class="s3">() != </span><span class="s2">null</span><span class="s3">) {</span>
+                    <span class="s1">setCurrentRoom</span><span class="s3">(</span><span class="s1">getCurrentRoom</span><span class="s3">().</span><span class="s1">getEast</span><span class="s3">());</span>
+                    <span class="s1">move </span><span class="s3">= </span><span class="s2">true</span><span class="s3">;</span>
+                <span class="s3">} </span><span class="s2">else </span><span class="s3">{</span>
+                    <span class="s1">noroom </span><span class="s3">= </span><span class="s2">true</span><span class="s3">;</span>
+                <span class="s3">}</span>
+            <span class="s3">} </span><span class="s2">else if </span><span class="s3">(</span><span class="s1">p</span><span class="s3">.</span><span class="s1">getCommand</span><span class="s3">().</span><span class="s1">getType</span><span class="s3">() == </span><span class="s1">CommandType</span><span class="s3">.</span><span class="s1">WEST</span><span class="s3">) {</span>
+                <span class="s2">if </span><span class="s3">(</span><span class="s1">getCurrentRoom</span><span class="s3">().</span><span class="s1">getWest</span><span class="s3">() != </span><span class="s2">null</span><span class="s3">) {</span>
+                    <span class="s1">setCurrentRoom</span><span class="s3">(</span><span class="s1">getCurrentRoom</span><span class="s3">().</span><span class="s1">getWest</span><span class="s3">());</span>
+                    <span class="s1">move </span><span class="s3">= </span><span class="s2">true</span><span class="s3">;</span>
+                <span class="s3">} </span><span class="s2">else </span><span class="s3">{</span>
+                    <span class="s1">noroom </span><span class="s3">= </span><span class="s2">true</span><span class="s3">;</span>
+                <span class="s3">}</span>
+            <span class="s3">} </span><span class="s2">else if </span><span class="s3">(</span><span class="s1">p</span><span class="s3">.</span><span class="s1">getCommand</span><span class="s3">().</span><span class="s1">getType</span><span class="s3">() == </span><span class="s1">CommandType</span><span class="s3">.</span><span class="s1">INVENTORY</span><span class="s3">) {</span>
+                <span class="s1">out</span><span class="s3">.</span><span class="s1">println</span><span class="s3">(</span><span class="s7">&quot;Nel tuo inventario hai:&quot;</span><span class="s3">);</span>
+                <span class="s2">for </span><span class="s3">(</span><span class="s1">AdvObject o </span><span class="s3">: </span><span class="s1">getInventory</span><span class="s3">()) {</span>
+                    <span class="s1">out</span><span class="s3">.</span><span class="s1">println</span><span class="s3">(</span><span class="s1">o</span><span class="s3">.</span><span class="s1">getName</span><span class="s3">() + </span><span class="s7">&quot;: &quot; </span><span class="s3">+ </span><span class="s1">o</span><span class="s3">.</span><span class="s1">getDescription</span><span class="s3">());</span>
+                <span class="s3">}</span>
+            <span class="s3">} </span><span class="s2">else if </span><span class="s3">(</span><span class="s1">p</span><span class="s3">.</span><span class="s1">getCommand</span><span class="s3">().</span><span class="s1">getType</span><span class="s3">() == </span><span class="s1">CommandType</span><span class="s3">.</span><span class="s1">LOOK_AT</span><span class="s3">) {</span>
+                <span class="s2">if </span><span class="s3">(</span><span class="s1">getCurrentRoom</span><span class="s3">().</span><span class="s1">getLook</span><span class="s3">() != </span><span class="s2">null</span><span class="s3">) {</span>
+                    <span class="s1">out</span><span class="s3">.</span><span class="s1">println</span><span class="s3">(</span><span class="s1">getCurrentRoom</span><span class="s3">().</span><span class="s1">getLook</span><span class="s3">());</span>
+                <span class="s3">} </span><span class="s2">else </span><span class="s3">{</span>
+                    <span class="s1">out</span><span class="s3">.</span><span class="s1">println</span><span class="s3">(</span><span class="s7">&quot;Non c'è niente di interessante qui.&quot;</span><span class="s3">);</span>
+                <span class="s3">}</span>
+            <span class="s3">} </span><span class="s2">else if </span><span class="s3">(</span><span class="s1">p</span><span class="s3">.</span><span class="s1">getCommand</span><span class="s3">().</span><span class="s1">getType</span><span class="s3">() == </span><span class="s1">CommandType</span><span class="s3">.</span><span class="s1">PICK_UP</span><span class="s3">) {</span>
+                <span class="s2">if </span><span class="s3">(</span><span class="s1">p</span><span class="s3">.</span><span class="s1">getObject</span><span class="s3">() != </span><span class="s2">null</span><span class="s3">) {</span>
+                    <span class="s2">if </span><span class="s3">(</span><span class="s1">p</span><span class="s3">.</span><span class="s1">getObject</span><span class="s3">().</span><span class="s1">isPickupable</span><span class="s3">()) {</span>
+                        <span class="s1">getInventory</span><span class="s3">().</span><span class="s1">add</span><span class="s3">(</span><span class="s1">p</span><span class="s3">.</span><span class="s1">getObject</span><span class="s3">());</span>
+                        <span class="s1">getCurrentRoom</span><span class="s3">().</span><span class="s1">getObjects</span><span class="s3">().</span><span class="s1">remove</span><span class="s3">(</span><span class="s1">p</span><span class="s3">.</span><span class="s1">getObject</span><span class="s3">());</span>
+                        <span class="s1">out</span><span class="s3">.</span><span class="s1">println</span><span class="s3">(</span><span class="s7">&quot;Hai raccolto: &quot; </span><span class="s3">+ </span><span class="s1">p</span><span class="s3">.</span><span class="s1">getObject</span><span class="s3">().</span><span class="s1">getDescription</span><span class="s3">());</span>
+                    <span class="s3">} </span><span class="s2">else </span><span class="s3">{</span>
+                        <span class="s1">out</span><span class="s3">.</span><span class="s1">println</span><span class="s3">(</span><span class="s7">&quot;Non puoi raccogliere questo oggetto.&quot;</span><span class="s3">);</span>
+                    <span class="s3">}</span>
+                <span class="s3">} </span><span class="s2">else </span><span class="s3">{</span>
+                    <span class="s1">out</span><span class="s3">.</span><span class="s1">println</span><span class="s3">(</span><span class="s7">&quot;Non c'è niente da raccogliere qui.&quot;</span><span class="s3">);</span>
+                <span class="s3">}</span>
+            <span class="s3">} </span><span class="s2">else if </span><span class="s3">(</span><span class="s1">p</span><span class="s3">.</span><span class="s1">getCommand</span><span class="s3">().</span><span class="s1">getType</span><span class="s3">() == </span><span class="s1">CommandType</span><span class="s3">.</span><span class="s1">PUSH</span><span class="s3">) {</span>
+                <span class="s2">if</span><span class="s3">(</span><span class="s1">p</span><span class="s3">.</span><span class="s1">getObject</span><span class="s3">().</span><span class="s1">getId</span><span class="s3">()==</span><span class="s6">4 </span><span class="s3">&amp;&amp; </span><span class="s1">p</span><span class="s3">.</span><span class="s1">getInvObject</span><span class="s3">()==</span><span class="s2">null</span><span class="s3">){</span>
+                    <span class="s1">end</span><span class="s3">(</span><span class="s1">out</span><span class="s3">,</span><span class="s6">1</span><span class="s3">);</span>
+                <span class="s3">}</span>
+                <span class="s0">//4 sta per il pulsante e 3 sta per le ossa</span>
+                <span class="s2">else if</span><span class="s3">(</span><span class="s1">p</span><span class="s3">.</span><span class="s1">getObject</span><span class="s3">().</span><span class="s1">getId</span><span class="s3">()==</span><span class="s6">4 </span><span class="s3">&amp;&amp; </span><span class="s1">p</span><span class="s3">.</span><span class="s1">getInvObject</span><span class="s3">().</span><span class="s1">getId</span><span class="s3">()==</span><span class="s6">3</span><span class="s3">){</span>
+                    <span class="s1">out</span><span class="s3">.</span><span class="s1">println</span><span class="s3">(</span><span class="s7">&quot;Hai premuto il pulsante e improvvisamente una lama affilata cade dall'alto... &quot; </span><span class="s3">+</span>
+                            <span class="s7">&quot;Per fortuna non ci hai infilato la mano!&quot;</span><span class="s3">);</span>
+
+                <span class="s3">}</span>
+                <span class="s0">//4 sta per pulsante e il diverso da 3 rappresenta qualsiasi oggetto che non sia l'osso</span>
+                <span class="s2">else if </span><span class="s3">(</span><span class="s1">p</span><span class="s3">.</span><span class="s1">getObject</span><span class="s3">().</span><span class="s1">getId</span><span class="s3">()==</span><span class="s6">4 </span><span class="s3">&amp;&amp; </span><span class="s1">p</span><span class="s3">.</span><span class="s1">getInvObject</span><span class="s3">().</span><span class="s1">getId</span><span class="s3">()!=</span><span class="s6">3</span><span class="s3">) {</span>
+                    <span class="s1">out</span><span class="s3">.</span><span class="s1">println</span><span class="s3">(</span><span class="s7">&quot;Non succede nulla...Sembra che il pulsante richieda qualcos'altro...&quot;</span><span class="s3">);</span>
+                <span class="s3">} </span>
+
+
+                <span class="s0">/* 
+                //ricerca oggetti pushabili 
+                if (p.getObject() != null &amp;&amp; p.getObject().isPushable()) { 
+                    out.println(&quot;Hai premuto: &quot; + p.getObject().getName()); 
+                    if (p.getObject().getId() == 3) { 
+                        end(out); 
+                    } 
+                } else if (p.getInvObject() != null &amp;&amp; p.getInvObject().isPushable()) { 
+                    out.println(&quot;Hai premuto: &quot; + p.getInvObject().getName()); 
+                    if (p.getInvObject().getId() == 3) { 
+                        end(out); 
+                    } 
+                } else { 
+                    out.println(&quot;Non ci sono oggetti che puoi premere qui.&quot;); 
+                }*/</span>
+            <span class="s3">}</span>
+
+            <span class="s2">if </span><span class="s3">(</span><span class="s1">noroom</span><span class="s3">) {</span>
+                <span class="s1">out</span><span class="s3">.</span><span class="s1">println</span><span class="s3">(</span><span class="s7">&quot;Da quella parte non si può andare c'è un muro! Non hai ancora acquisito i poteri per oltrepassare i muri...&quot;</span><span class="s3">);</span>
+            <span class="s3">}</span>
+        <span class="s3">}</span>
+    <span class="s3">}</span>
+
+    <span class="s2">private void </span><span class="s1">end</span><span class="s3">(</span><span class="s1">PrintStream out</span><span class="s3">, </span><span class="s2">int </span><span class="s1">code</span><span class="s3">) {</span>
+        <span class="s2">if</span><span class="s3">(</span><span class="s1">code</span><span class="s3">==</span><span class="s6">1</span><span class="s3">){</span>
+            <span class="s1">out</span><span class="s3">.</span><span class="s1">println</span><span class="s3">(</span><span class="s7">&quot;Hai premuto il pulsante e improvvisamente una lama affilata ti taglia la mano... Hai subito una grave ferita! Sei morto!&quot;</span><span class="s3">);</span>
+        <span class="s3">}</span>
+        <span class="s2">else</span><span class="s3">{</span>
+            <span class="s1">out</span><span class="s3">.</span><span class="s1">println</span><span class="s3">(</span><span class="s7">&quot;sei morto&quot;</span><span class="s3">);</span>
+        <span class="s3">}</span>
+
+        <span class="s1">System</span><span class="s3">.</span><span class="s1">exit</span><span class="s3">(</span><span class="s6">0</span><span class="s3">);</span>
+    <span class="s3">}</span>
+
+    <span class="s0">/* 
+    @Override 
+public void nextMove(ParserOutput p, PrintStream out) { 
+    if (p.getCommand() == CommandType.LOOK_AT) { 
+        if (p.getObjects().isEmpty()) { 
+            // No object specified 
+            out.println(&quot;Cosa vuoi osservare?&quot;); 
+        } else { 
+            AdvObject object = p.getObjects().get(0); 
+            if (object.getLocation() != getCurrentRoom()) { 
+                // Object not in current room 
+                out.println(&quot;Non vedo nessun oggetto del genere qui.&quot;); 
+            } else { 
+                // Describe the object 
+                out.println(object.getDescription()); 
+            } 
+        } 
+    } else if (p.getCommand() == CommandType.PICK_UP) { 
+        if (p.getObjects().isEmpty()) { 
+            // No object specified 
+            out.println(&quot;Cosa vuoi raccogliere?&quot;); 
+        } else { 
+            AdvObject object = p.getObjects().get(0); 
+            if (object.getLocation() != getCurrentRoom()) { 
+                // Object not in current room 
+                out.println(&quot;Non vedo nessun oggetto del genere qui.&quot;); 
+            } else if (!object.isPickupable()) { 
+                // Object cannot be picked up 
+                out.println(&quot;Non puoi raccogliere questo oggetto.&quot;); 
+            } else { 
+                // Pick up the object 
+                object.setLocation(null); 
+                getInventory().add(object); 
+                out.println(&quot;Hai raccolto &quot; + object.getName() + &quot;.&quot;); 
+            } 
+        } 
+    } else if (p.getCommand() == CommandType.OPEN) { 
+        if (p.getObjects().isEmpty()) { 
+            // No object specified 
+            out.println(&quot;Cosa vuoi aprire?&quot;); 
+        } else { 
+            AdvObject object = p.getObjects().get(0); 
+            if (object.getLocation() != getCurrentRoom()) { 
+                // Object not in current room 
+                out.println(&quot;Non vedo nessun oggetto del genere qui.&quot;); 
+            } else if (!object.isOpenable()) { 
+                // Object cannot be opened 
+                out.println(&quot;Non puoi aprire questo oggetto.&quot;); 
+            } else if (object.isOpen()) { 
+                // Object is already open 
+                out.println(&quot;È già aperto.&quot;); 
+            } else { 
+                // Open the object 
+                object.setOpen(true); 
+                out.println(&quot;Hai aperto &quot; + object.getName() + &quot;.&quot;); 
+            } 
+        } 
+    } else if (p.getCommand() == CommandType.PUSH) { 
+        if (p.getObjects().isEmpty()) { 
+            // No object specified 
+            out.println(&quot;Cosa vuoi premere?&quot;); 
+        } else { 
+            AdvObject object = p.getObjects().get(0); 
+            if (object.getLocation() != getCurrentRoom()) { 
+                // Object not in current room 
+                out.println(&quot;Non vedo nessun oggetto del genere qui.&quot;); 
+            } else if (!object.isPushable()) { 
+                // Object cannot be pushed 
+                out.println(&quot;Non puoi premere questo oggetto.&quot;); 
+            } else if (object.isPush()) { 
+                // Object is already pushed 
+                out.println(&quot;È già premuto.&quot;); 
+            } else { 
+                // Push the object 
+                object.setPush(true); 
+                out.println(&quot;Hai premuto &quot; + object.getName() + &quot;.&quot;); 
+            } 
+        } 
+    } else if (p.getCommand() == CommandType.INVENTORY) { 
+        if (getInventory().isEmpty()) { 
+            // Inventory is empty 
+            out.println(&quot;Il tuo inventario è vuoto.&quot;); 
+        } else { 
+            // List the inventory items 
+            out.println(&quot;Hai i seguenti oggetti nell'inventario:&quot;); 
+            for (AdvObject object : getInventory()) { 
+                out.println(&quot;- &quot; + object.getName()); 
+            } 
+        } 
+    } else if (p.getCommand() == CommandType.END) { 
+        // End the game 
+        endGame(); 
+    } else { 
+        // Invalid command 
+        out.println(&quot;Comando non valido.&quot;); 
+    } 
+} 
+ 
+    */</span>
+    <span class="s2">public </span><span class="s1">JasonBirdEilTeschioDiCristallo</span><span class="s3">() {</span>
+    <span class="s3">}</span>
+
+    <span class="s1">@Override</span>
+    <span class="s2">public void </span><span class="s1">nextMove</span><span class="s3">(</span><span class="s1">ParserOutput p</span><span class="s3">, </span><span class="s1">PrintStream out</span><span class="s3">) {</span>
+        <span class="s2">throw new </span><span class="s1">UnsupportedOperationException</span><span class="s3">(</span><span class="s7">&quot;Not supported yet.&quot;</span><span class="s3">); </span><span class="s0">// Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody</span>
+    <span class="s3">}</span>
+
+<span class="s3">}</span>
+</pre>
+</body>
+</html>
